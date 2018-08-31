@@ -2,7 +2,7 @@
 
 ###RESTful Beer webservice
 
-This is a simple proof of concept RESTful API built with Java 8, Spring, Hibernate, JPA, H2, & jUnit.
+This is a simple proof of concept RESTful API built with Java 8, Spring Boot, Hibernate, JPA, H2, Maven, & jUnit.
 
 Beer data was sourced from [Open Beer DB](https://openbeerdb.com/)
 
@@ -17,3 +17,4 @@ Beer data was sourced from [Open Beer DB](https://openbeerdb.com/)
 - Implement more robust search
 - Page results for requests with large result sets
 - Implement view layer
+- More robust/descriptive error handling

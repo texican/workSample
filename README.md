@@ -1,17 +1,34 @@
-##Carlos Flores Work Sample
+##Work Sample
 
-###RESTful Beer webservice
+###RESTful Beer :beers: webservice
 
-This is a simple proof of concept RESTful API built with Java 8, Spring Boot, Hibernate, JPA, H2, Maven, & jUnit.
-
-Beer data was sourced from [Open Beer DB](https://openbeerdb.com/)
+This is a simple proof of concept RESTful API built with Java 8, Spring Boot, Hibernate, JPA, H2, Maven, & jUnit. The API is basically a handful of GET endpoints that intereact with an in-memory database of nearly 6000 beers and over 1400 breweries. Beer data was sourced from the [Open Beer DB](https://openbeerdb.com/).
 
 
-##Future Work
-- Implement Create & Delete endpoints for Beers, Breweries, Categories, & Styles
-- Make Classes more granular
-- More thorough unit and integration tests 
-- Logging
+###Endpoints
+- Get All beers :beers:^ 
+[http://localhost:8888/beers](http://localhost:8888/beers)
+- Get beer by ID :beer:
+[http://localhost:8888/beers/{beerId}](http://localhost:8888/beers/{beerId})
+- Search for beers by name fragment 
+[http://localhost:8888/beers/search/{beerName}](http://localhost:8888/beers/search/{beerName})
+
+- Get All breweries^ 
+[http://localhost:8888/breweries](http://localhost:8888/breweries})
+- Get brewery by ID [http://localhost:8888/breweries/{breweryId}](http://localhost:8888/breweries/{breweryId})
+- Search for breweries by name fragment 
+[http://localhost:8888/breweries/search/{breweryName}](http://localhost:8888/breweries/search/{breweryName})
+
+> ^ These endpoints are really slow since they get all beer and brewery entries from the database and are not paged. See future work.
+
+
+
+###Future Work
+- [ ] Implement Create & Delete endpoints for Beers & Breweries
+- [ ] Implement CRUD endpoints for Categories & Styles
+- [ ] Make Classes more granular (i.e. make separate services and controllers for beers, brewweries, categories, & styles)
+- [ ] More thorough unit and integration tests 
+- Customize logging
 - Implement HATEOAS
 - Utilize Stream API
 - Implement more robust search

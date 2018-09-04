@@ -19,7 +19,6 @@ public class BeerDto implements Serializable {
 
 	public BeerDto(Long id, String name, Long breweryId, String breweryName, Long categoryId, String categoryName, Long styleId,
 			String style, Float abv, Float ibu, String description) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.breweryId = breweryId;

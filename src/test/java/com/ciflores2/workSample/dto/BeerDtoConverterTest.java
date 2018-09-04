@@ -14,7 +14,7 @@ import com.ciflores2.workSample.jpa.repository.CategoryRepository;
 import com.ciflores2.workSample.jpa.repository.StyleRepository;
 
 public class BeerDtoConverterTest {
-	
+
 	@Autowired
 	private BeerDtoConverter converter;
 	@Autowired
@@ -30,22 +30,12 @@ public class BeerDtoConverterTest {
 
 	@Test
 	public void convertToBeerDto_HappyPath() {
-		
+
 	}
-	
+
 	@Test
 	public void convertToBeerDtos_HappyPath() {
-		
+
 	}
-	
-	@Test
-	public void convertToBreweryDto_HappyPath() {
-		
-	}
-	
-	@Test
-	public void convertToBreweryDtos_HappyPath() {
-		
-	}
-	
+
 }

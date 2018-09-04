@@ -11,17 +11,16 @@ public class Address {
 	private String zipCode;
 	private String country; // TODO: make enum
 
+	protected Address() {
+	}
+
 	public Address(String address1, String address2, String city, String state, String zipCode, String country) {
-		super();
 		this.address1 = address1;
 		this.address2 = address2;
 		this.city = city;
 		this.state = state;
 		this.zipCode = zipCode;
 		this.country = country;
-	}
-
-	protected Address() {
 	}
 
 	public String getAddress1() {

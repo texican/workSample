@@ -3,68 +3,45 @@ package com.ciflores2.workSample.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.ciflores2.workSample.jpa.entity.Beer;
-import com.ciflores2.workSample.jpa.entity.Brewery;
-import com.ciflores2.workSample.jpa.entity.Category;
-import com.ciflores2.workSample.jpa.entity.Style;
-import com.ciflores2.workSample.jpa.repository.BeerRepository;
-import com.ciflores2.workSample.jpa.repository.BreweryRepository;
-import com.ciflores2.workSample.jpa.repository.CategoryRepository;
-import com.ciflores2.workSample.jpa.repository.StyleRepository;
+import com.ciflores2.workSample.service.BreweryService;
+import com.ciflores2.workSample.service.CategoryService;
+import com.ciflores2.workSample.service.StyleService;
 
 @Component
 public class BeerDtoConverter {
+	// TODO: Implement meaningful logging
+	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	@Autowired
-	private BeerRepository beerRepo;
+	private BreweryService breweryService;
 	@Autowired
-	private BreweryRepository breweryRepo;
+	private StyleService styleService;
 	@Autowired
-	private StyleRepository styleRepo;
-	List<Style> styles = new ArrayList<>();
-	@Autowired
-	private CategoryRepository categoryRepo;
-	List<Category> categories = new ArrayList<>();
+	private CategoryService categoryService;
 
 	public BeerDto convertToBeerDto(Beer beer) {
-		String breweryName = breweryRepo.findBreweryNameById(beer.getBreweryId());
-		// TODO:
-		// String category = findCategoryById(beer.getCatId()).getCategoryName();
-		// String style = findStyleById(beer.getStyleId()).getStyleName();
-		String category = categoryRepo.findCategoryNameById(beer.getCatId());
-		String style = styleRepo.findStyleNameById(beer.getStyleId());
+		String breweryName = breweryService.findBreweryNameById(beer.getBreweryId());
+		String category = categoryService.findCategoryNameById(beer.getCatId());
+		String style = styleService.findStyleNameById(beer.getStyleId());
+		
 		BeerDto beerDto = new BeerDto(beer.getId(), beer.getName(), beer.getBreweryId(), breweryName, beer.getCatId(),
 				category, beer.getStyleId(), style, beer.getAbv(), beer.getIbu(), beer.getDescription());
 		return beerDto;
 	}
 
-	public List<BeerDto> convertToBeerDtos(List<Beer> beers) {
+	public List<BeerDto> convertToBeerDtoList(List<Beer> beers) {
 		List<BeerDto> beerDtos = new ArrayList<>();
 
 		for (Beer beer : beers) {
 			beerDtos.add(convertToBeerDto(beer));
 		}
 		return beerDtos;
-	}
-
-	public BreweryDto convertToBreweryDto(Brewery brewery) {
-		List<BeerDto> beerDtos = convertToBeerDtos(beerRepo.findBeersByBreweryId(brewery.getId()));
-
-		BreweryDto breweryDto = new BreweryDto(brewery.getId(), brewery.getName(), brewery.getAddress(),
-				brewery.getPhone(), brewery.getWebsite(), brewery.getDescription(), beerDtos);
-		return breweryDto;
-	}
-
-	public List<BreweryDto> convertToBreweryDtos(List<Brewery> breweries) {
-		List<BreweryDto> breweryDtos = new ArrayList<>();
-
-		for (Brewery brewery : breweries) {
-			breweryDtos.add(convertToBreweryDto(brewery));
-		}
-		return breweryDtos;
 	}
 
 }

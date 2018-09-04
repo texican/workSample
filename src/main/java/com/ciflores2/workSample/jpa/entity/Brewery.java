@@ -28,9 +28,11 @@ public class Brewery {
 	@Column(name = "last_mod")
 	private LocalDateTime lastModified;
 
+	public Brewery() {
+	}
+
 	public Brewery(Long id, String name, Address address, String phone, String website, String filePath,
-			String description, Integer addUser, LocalDateTime lastModified) {
-		super();
+			String description, Integer addUser) {
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -39,10 +41,7 @@ public class Brewery {
 		this.filePath = filePath;
 		this.description = description;
 		this.addUser = addUser;
-		this.lastModified = lastModified;
-	}
-
-	public Brewery() {
+		this.lastModified = LocalDateTime.now();
 	}
 
 	public Long getId() {

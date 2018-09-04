@@ -9,33 +9,24 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="styles")
+@Table(name = "styles")
 public class Style {
 	@Id
 	@GeneratedValue
 	private Long id;
 	private Long categoryId;
 	private String styleName;
-	@Column(name="last_mod")
+	@Column(name = "last_mod")
 	private LocalDateTime lastModified;
 
 	public Style() {
-		super();
 	}
 
-	public Style(Long id, Long categoryId, String styleName, LocalDateTime lastModified) {
-		super();
+	public Style(Long id, Long categoryId, String styleName) {
 		this.id = id;
 		this.categoryId = categoryId;
 		this.styleName = styleName;
-		this.lastModified = lastModified;
-	}
-
-	public Style(Long categoryId, String styleName, LocalDateTime lastModified) {
-		super();
-		this.categoryId = categoryId;
-		this.styleName = styleName;
-		this.lastModified = lastModified;
+		this.lastModified = LocalDateTime.now();
 	}
 
 	public Long getId() {

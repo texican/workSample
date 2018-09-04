@@ -2,36 +2,45 @@ package com.ciflores2.workSample.service;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
+import java.util.stream.Stream;
+import org.assertj.core.util.Arrays;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.ciflores2.workSample.dto.BeerDto;
 import com.ciflores2.workSample.dto.BeerDtoConverter;
 import com.ciflores2.workSample.dto.BreweryDto;
+import com.ciflores2.workSample.dto.BreweryDtoConverter;
 import com.ciflores2.workSample.jpa.entity.Address;
 import com.ciflores2.workSample.jpa.entity.Beer;
 import com.ciflores2.workSample.jpa.entity.Brewery;
+import com.ciflores2.workSample.jpa.entity.Category;
+import com.ciflores2.workSample.jpa.entity.Style;
 import com.ciflores2.workSample.jpa.repository.BeerRepository;
 import com.ciflores2.workSample.jpa.repository.BreweryRepository;
 import com.ciflores2.workSample.jpa.repository.CategoryRepository;
 import com.ciflores2.workSample.jpa.repository.StyleRepository;
 
 @RunWith(MockitoJUnitRunner.StrictStubs.class)
-public class BeerServiceImplTest {
+public class BreweryServiceImplTest {
 
 	@InjectMocks
-	private BeerServiceImpl service;
+	private BreweryServiceImpl service;
 	private Beer goodBeer;
 	private Beer badBeer;
 	private BeerDto goodBeerDto;
@@ -46,6 +55,8 @@ public class BeerServiceImplTest {
 	private BreweryDto goodBreweryDto;
 	private Brewery badBrewery;
 	private BreweryDto badBreweryDto;
+	private List<Brewery> allBreweries;
+	private List<BreweryDto> allBreweryDtos;
 
 	@Mock
 	private BeerRepository beerRepo;
@@ -56,7 +67,7 @@ public class BeerServiceImplTest {
 	@Mock
 	private CategoryRepository categoryRepo;
 	@Mock
-	private BeerDtoConverter converter;
+	private BreweryDtoConverter converter;
 
 	@Before
 	public void init() {
@@ -90,15 +101,16 @@ public class BeerServiceImplTest {
 		badBreweryDto = new BreweryDto(2l, "Bad Beer Brewing", address, "phone", "website", "A bad beer brewery",
 				badBeerDtos);
 
+		allBreweries = Stream.of(goodBrewery, badBrewery).collect(Collectors.toList());
+		allBreweryDtos = Stream.of(goodBreweryDto, badBreweryDto).collect(Collectors.toList());
+
 	}
 
 	@Test
-	public void testFindAllBeers() {
-		when(beerRepo.findAll()).thenReturn(allBeers);
-		when(converter.convertToBeerDtoList(allBeers)).thenReturn(allBeerDtos);
+	public void testFindAllBreweries() {
+		when(breweryRepo.findAll()).thenReturn(allBreweries);
+		when(converter.convertToBreweryDtoList(allBreweries)).thenReturn(allBreweryDtos);
 
-		 assertThat(service.findAllBeers(), is(allBeerDtos));
+		assertThat(service.findAllBreweries(), is(allBreweryDtos));
 	}
-
-
 }

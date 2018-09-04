@@ -1,7 +1,6 @@
 ## Work Sample
 
 ### RESTful Beer :beers: Webservice
-
 This is a simple proof of concept RESTful API built with Java 8, Spring Boot, Hibernate, JPA, H2, Maven, & jUnit. The API is basically a handful of GET endpoints that intereact with an in-memory database of nearly 6000 beers and over 1400 breweries. Beer data was sourced from the [Open Beer DB](https://openbeerdb.com/).
 
 
@@ -26,7 +25,6 @@ This is a simple proof of concept RESTful API built with Java 8, Spring Boot, Hi
 ### Future Work
 - [ ] Implement Create, Update, & Delete endpoints for Beers & Breweries
 - [ ] Implement CRUD endpoints for Categories & Styles
-- [ ] Make Classes more granular (i.e. make separate services and controllers for beers, brewweries, categories, & styles)
 - [ ] More thorough unit and integration tests 
 - [ ] Customize logging
 - [ ] Implement HATEOAS
@@ -35,5 +33,6 @@ This is a simple proof of concept RESTful API built with Java 8, Spring Boot, Hi
 - [ ] Page results for requests with large result sets
 - [ ] Implement view layer
 - [ ] More robust/descriptive error handling
+- [ ] Prevent editing of LastModified values when no changes have been made to the entity
 
-:beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer:
+:beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer:

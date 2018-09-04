@@ -1,11 +1,10 @@
-package com.ciflores2.workSample.service;
+package com.ciflores2.workSample.dto;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -16,22 +15,16 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.ciflores2.workSample.dto.BeerDto;
-import com.ciflores2.workSample.dto.BeerDtoConverter;
-import com.ciflores2.workSample.dto.BreweryDto;
 import com.ciflores2.workSample.jpa.entity.Address;
 import com.ciflores2.workSample.jpa.entity.Beer;
 import com.ciflores2.workSample.jpa.entity.Brewery;
-import com.ciflores2.workSample.jpa.repository.BeerRepository;
-import com.ciflores2.workSample.jpa.repository.BreweryRepository;
-import com.ciflores2.workSample.jpa.repository.CategoryRepository;
-import com.ciflores2.workSample.jpa.repository.StyleRepository;
+import com.ciflores2.workSample.service.BeerService;
 
 @RunWith(MockitoJUnitRunner.StrictStubs.class)
-public class BeerServiceImplTest {
+public class BreweryDtoConverterTest {
 
 	@InjectMocks
-	private BeerServiceImpl service;
+	private BreweryDtoConverter breweryConverter;
 	private Beer goodBeer;
 	private Beer badBeer;
 	private BeerDto goodBeerDto;
@@ -48,15 +41,9 @@ public class BeerServiceImplTest {
 	private BreweryDto badBreweryDto;
 
 	@Mock
-	private BeerRepository beerRepo;
+	private BeerDtoConverter beerConverter;
 	@Mock
-	private BreweryRepository breweryRepo;
-	@Mock
-	private StyleRepository styleRepo;
-	@Mock
-	private CategoryRepository categoryRepo;
-	@Mock
-	private BeerDtoConverter converter;
+	private BeerService beerService;
 
 	@Before
 	public void init() {
@@ -93,12 +80,22 @@ public class BeerServiceImplTest {
 	}
 
 	@Test
-	public void testFindAllBeers() {
-		when(beerRepo.findAll()).thenReturn(allBeers);
-		when(converter.convertToBeerDtoList(allBeers)).thenReturn(allBeerDtos);
+	public void convertToBreweryDto_HappyPath() {
+		when(beerService.findBeersByBreweryId(1l)).thenReturn(goodBeerDtos);
 
-		 assertThat(service.findAllBeers(), is(allBeerDtos));
+		BreweryDto dto = breweryConverter.convertToBreweryDto(goodBrewery);
+
+		assertThat(dto.getId(), is(goodBreweryDto.getId()));
+		assertThat(dto.getName(), is(goodBreweryDto.getName()));
+		assertThat(dto.getAddress(), is(goodBreweryDto.getAddress()));
+		assertThat(dto.getPhone(), is(goodBreweryDto.getPhone()));
+		assertThat(dto.getWebsite(), is(goodBreweryDto.getWebsite()));
+		assertThat(dto.getDescription(), is(goodBreweryDto.getDescription()));
 	}
 
+	@Test
+	public void convertToBreweryDtos_HappyPath() {
+
+	}
 
 }

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.ciflores2.workSample.dto.BeerDto;
 import com.ciflores2.workSample.dto.BreweryDto;
 import com.ciflores2.workSample.service.BeerService;
+import com.ciflores2.workSample.service.BreweryService;
 
 @RestController
 public class BeerController {
@@ -19,6 +20,8 @@ public class BeerController {
 
 	@Autowired
 	private BeerService beerService;
+	@Autowired
+	private BreweryService breweryService;
 
 	@GetMapping("/beers/{beerId}")
 	public BeerDto findBeerById(@PathVariable Long beerId) {
@@ -38,18 +41,18 @@ public class BeerController {
 
 	@GetMapping("/breweries/{breweryId}")
 	public BreweryDto findBreweryById(@PathVariable Long breweryId) {
-		return beerService.findBreweryById(breweryId);
+		return breweryService.findBreweryById(breweryId);
 	}
 
 	@GetMapping("/breweries")
 	public List<BreweryDto> findAllBreweries() {
-		return beerService.findAllBreweries();
+		return breweryService.findAllBreweries();
 	}
 
 	//TODO: rethink URI
 	@GetMapping("/breweries/search/{breweryName}")
-	public List<BreweryDto> findBreweriesName(@PathVariable String breweryName) {
-		return beerService.findBreweriesByName(breweryName);
+	public List<BreweryDto> findBreweriesByName(@PathVariable String breweryName) {
+		return breweryService.findBreweriesByName(breweryName);
 	}
 
 }

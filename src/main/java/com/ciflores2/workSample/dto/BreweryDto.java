@@ -16,9 +16,11 @@ public class BreweryDto implements Serializable {
 	private String website;
 	private String description;
 
+	public BreweryDto() {
+	}
+
 	public BreweryDto(Long id, String name, Address address, String phone, String website, String description,
 			List<BeerDto> beers) {
-		super();
 		this.id = id;
 		this.name = name;
 		this.address = address;
@@ -26,9 +28,6 @@ public class BreweryDto implements Serializable {
 		this.website = website;
 		this.description = description;
 		this.beers = beers;
-	}
-
-	public BreweryDto() {
 	}
 
 	public Long getId() {

@@ -9,30 +9,22 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="categories")
+@Table(name = "categories")
 public class Category {
 	@Id
 	@GeneratedValue
 	private Long id;
 	private String categoryName;
-	@Column(name="last_mod")
+	@Column(name = "last_mod")
 	private LocalDateTime lastModified;
 
 	public Category() {
-		super();
 	}
 
-	public Category(Long id, String categoryName, LocalDateTime lastModified) {
-		super();
+	public Category(Long id, String categoryName) {
 		this.id = id;
 		this.categoryName = categoryName;
-		this.lastModified = lastModified;
-	}
-
-	public Category(String categoryName, LocalDateTime lastModified) {
-		super();
-		this.categoryName = categoryName;
-		this.lastModified = lastModified;
+		this.lastModified = LocalDateTime.now();
 	}
 
 	public Long getId() {

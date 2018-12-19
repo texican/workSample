@@ -23,6 +23,8 @@ This is a simple proof of concept RESTful API built with Java 8, Spring Boot, Hi
 
 
 ### Future Work
+- [ ] Swagger integration
+- [ ] Category & Style DTOs
 - [ ] Implement Create, Update, & Delete endpoints for Beers & Breweries
 - [ ] Implement CRUD endpoints for Categories & Styles
 - [ ] More thorough unit and integration tests 
@@ -34,5 +36,6 @@ This is a simple proof of concept RESTful API built with Java 8, Spring Boot, Hi
 - [ ] Implement view layer
 - [ ] More robust/descriptive error handling
 - [ ] Prevent editing of LastModified values when no changes have been made to the entity
+- [ ] Implement authentication
 
 :beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers::beer::beers:

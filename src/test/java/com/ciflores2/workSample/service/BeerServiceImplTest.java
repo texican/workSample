@@ -80,15 +80,11 @@ public class BeerServiceImplTest {
 
 		Address address = new Address("address1", "address2", "city", "state", "zipCode", "country");
 
-		goodBrewery = new Brewery(1l, "Good Beer Brewing", address, "phone", "website", "filePath",
-				"A good beer brewery", 1);
-		goodBreweryDto = new BreweryDto(1l, "Good Beer Brewing", address, "phone", "website", "A good beer brewery",
-				goodBeerDtos);
+		goodBrewery = new Brewery(1l, "Good Beer Brewing", address, "phone", "website", "filePath", "A good beer brewery", 1);
+		goodBreweryDto = new BreweryDto(1l, "Good Beer Brewing", address, "phone", "website", "A good beer brewery", goodBeerDtos);
 
-		badBrewery = new Brewery(2l, "Bad Beer Brewing", address, "phone", "website", "filePath", "A bad beer brewery",
-				1);
-		badBreweryDto = new BreweryDto(2l, "Bad Beer Brewing", address, "phone", "website", "A bad beer brewery",
-				badBeerDtos);
+		badBrewery = new Brewery(2l, "Bad Beer Brewing", address, "phone", "website", "filePath", "A bad beer brewery",	1);
+		badBreweryDto = new BreweryDto(2l, "Bad Beer Brewing", address, "phone", "website", "A bad beer brewery", badBeerDtos);
 
 	}
 

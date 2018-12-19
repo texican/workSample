@@ -13,9 +13,6 @@ import com.ciflores2.workSample.jpa.repository.BeerRepository;
 public class WorkSampleApplication {
 	private Logger logger = LoggerFactory.getLogger(this.getClass());
 
-	@Autowired
-	BeerRepository repository;
-	
 	public static void main(String[] args) {
 		SpringApplication.run(WorkSampleApplication.class, args);
 	}
